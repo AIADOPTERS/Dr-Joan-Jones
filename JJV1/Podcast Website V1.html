@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Told You That You Were Done? — Dr. Joan Jones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF6EE; --bg2:#F3EADB; --panel:#FFFDF9;
+    --ink:#3A2F22; --ink-strong:#2E2216; --muted:#8A7A64;
+    --brown:#6B4E2E; --brown-deep:#4A3418;
+    --accent:#B0642F; --accent-deep:#8F4E21; --accent-soft:#E7C9A6;
+    --line:#E3D6C1;
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --body:'Karla',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--display);color:var(--brown-deep);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+  .mark{width:38px;height:38px;flex:none}
+  .brand .mono{font-family:var(--display);font-weight:600;font-size:1.18rem;color:var(--brown-deep);line-height:1}
+  .brand .mono small{display:block;font-family:var(--body);font-weight:600;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-top:3px}
+  nav.links{display:flex;align-items:center;gap:6px}
+  nav.links a{font-weight:600;font-size:.92rem;padding:9px 14px;border-radius:999px;color:var(--brown);transition:background .2s,color .2s}
+  nav.links a:hover{background:var(--bg2)}
+  nav.links a.active{color:var(--brown-deep);background:var(--bg2)}
+  .btn{display:inline-block;font-family:var(--body);font-weight:700;font-size:.9rem;letter-spacing:.01em;padding:11px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s}
+  .btn-accent{background:var(--accent);color:#fff;box-shadow:0 6px 18px -8px rgba(143,78,33,.7)}
+  .btn-accent:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--brown-deep);border-color:var(--line)}
+  .btn-ghost:hover{background:var(--bg2)}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:40px;cursor:pointer;align-items:center;justify-content:center}
+  .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{content:'';display:block;width:20px;height:2px;background:var(--brown-deep);position:relative;transition:.2s}
+  .nav-toggle span::before{position:absolute;top:-6px}
+  .nav-toggle span::after{position:absolute;top:6px}
+
+  /* ---------- pages ---------- */
+  .page{display:none;animation:fade .5s ease both}
+  .page.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  section{padding:92px 0}
+  .eyebrow{font-family:var(--body);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+  .lead{font-size:1.14rem;color:var(--ink);max-width:60ch}
+  .muted{color:var(--muted)}
+
+  /* dawn signature */
+  .dawn{display:block}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:104px 0 96px;overflow:hidden}
+  .hero::before{content:'';position:absolute;left:50%;top:-140px;width:820px;height:820px;transform:translateX(-50%);
+    background:radial-gradient(circle at 50% 40%, rgba(231,201,166,.55), rgba(231,201,166,0) 62%);z-index:0}
+  .hero .wrap{position:relative;z-index:1;text-align:center}
+  .hero .dawn{margin:0 auto 26px}
+  .hero h1{font-size:clamp(2.7rem,7.4vw,5.4rem);letter-spacing:-.02em}
+  .hero .answer{font-family:var(--display);font-style:italic;font-weight:400;color:var(--accent);font-size:clamp(1.5rem,3.6vw,2.4rem);margin-top:14px}
+  .hero .lead{margin:26px auto 0;text-align:center}
+  .hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+
+  /* generic layout helpers */
+  .grid{display:grid;gap:26px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-2{grid-template-columns:1.05fr .95fr;align-items:center;gap:60px}
+  .center{text-align:center;max-width:64ch;margin:0 auto}
+  .stack-sm>*+*{margin-top:14px}
+
+  .band{background:var(--bg2)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px 28px}
+  .card .num{font-family:var(--display);font-size:.95rem;color:var(--accent);font-weight:600;letter-spacing:.02em}
+  .card h3{font-size:1.35rem;margin:10px 0 8px}
+  .card p{color:var(--ink);font-size:.98rem}
+
+  .sec-head{max-width:64ch}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:12px 0 0}
+
+  /* who-for list */
+  .forlist{list-style:none;display:grid;gap:2px;margin-top:26px;border-top:1px solid var(--line)}
+  .forlist li{display:flex;gap:20px;align-items:baseline;padding:22px 4px;border-bottom:1px solid var(--line)}
+  .forlist li b{font-family:var(--display);font-weight:600;color:var(--accent);font-size:1.05rem;min-width:34px}
+  .forlist li span{font-size:1.06rem}
+
+  /* seasons */
+  .season{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;padding:26px 0;border-bottom:1px solid var(--line)}
+  .season:last-child{border-bottom:0}
+  .season .tag{font-family:var(--display);font-weight:600;color:var(--brown);white-space:nowrap;font-size:1.05rem}
+  .season h3{font-size:1.3rem;margin-bottom:6px}
+
+  /* quote */
+  .quote{background:var(--brown-deep);color:#F3E7D5;border-radius:26px;padding:70px 8%;text-align:center}
+  .quote p{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.25;color:#FBF1E2;max-width:24ch;margin:0 auto}
+  .quote cite{display:block;margin-top:26px;font-family:var(--body);font-style:normal;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;color:var(--accent-soft)}
+
+  /* signup */
+  .signup{display:flex;gap:12px;max-width:480px;margin-top:26px;flex-wrap:wrap}
+  .signup input{flex:1;min-width:220px;padding:14px 18px;border:1px solid var(--line);border-radius:999px;font-family:var(--body);font-size:1rem;background:var(--panel);color:var(--ink)}
+  .signup input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+
+  /* portrait medallion */
+  .portrait{aspect-ratio:1/1;border-radius:24px;background:
+      radial-gradient(circle at 50% 38%, #F6E3CB, #E7C9A6 70%);
+      display:flex;align-items:center;justify-content:center;position:relative;border:1px solid var(--line)}
+  .portrait .medallion{width:150px;height:150px;border-radius:50%;background:var(--brown-deep);color:#F3E7D5;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:3rem;font-weight:500;letter-spacing:.02em}
+  .portrait .cap{position:absolute;bottom:16px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);font-weight:700}
+
+  /* episodes */
+  .eps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+  .featured{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:26px;margin-top:30px}
+  .cover{aspect-ratio:1/1;border-radius:16px;position:relative;display:flex;align-items:center;justify-content:center;color:#F3E7D5;overflow:hidden}
+  .cover .cn{font-family:var(--display);font-size:2.8rem;font-weight:600}
+  .cmark{position:absolute;top:14px;left:14px;opacity:.9}
+  .cover .clabel{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.85}
+  .fmeta{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:.85rem;font-weight:600;margin:14px 0 16px}
+  .play{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;border:none;border-radius:999px;padding:12px 22px;font-family:var(--body);font-weight:700;font-size:.9rem;cursor:pointer;transition:.2s}
+  .play:hover{background:var(--accent-deep)}
+  .play:disabled{background:var(--muted);cursor:default}
+  .prog{height:6px;border-radius:999px;background:var(--bg2);margin-top:20px;position:relative;overflow:hidden}
+  .prog::after{content:'';position:absolute;left:0;top:0;bottom:0;width:7%;background:var(--accent);border-radius:999px}
+  .ep{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .ep-cover{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;color:#F3E7D5}
+  .ep-cover .en{font-family:var(--display);font-weight:600;font-size:2rem}
+  .ep-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .ep-body .emeta{font-size:.72rem;letter-spacing:.08em;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .ep-body h4{font-size:1.14rem;color:var(--brown-deep)}
+  .ep-body p{font-size:.92rem;color:var(--ink)}
+  .ep-play{margin-top:auto;padding-top:8px;display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:.85rem;cursor:pointer}
+
+  /* listen row */
+  .listen{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+  .listen a{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid var(--line);border-radius:12px;background:var(--panel);font-weight:600;font-size:.92rem;color:var(--brown-deep);transition:.2s}
+  .listen a:hover{border-color:var(--accent);background:var(--bg2)}
+  .listen .dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+
+  /* contact form */
+  .form{display:grid;gap:16px;max-width:560px}
+  .field{display:grid;gap:6px}
+  .field label{font-weight:700;font-size:.82rem;letter-spacing:.02em;color:var(--brown-deep)}
+  .field input,.field select,.field textarea{padding:13px 16px;border:1px solid var(--line);border-radius:12px;font-family:var(--body);font-size:1rem;background:var(--panel);color:var(--ink)}
+  .field textarea{min-height:130px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .form-note{padding:16px 18px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);color:var(--brown-deep);font-weight:600;display:none}
+  .form-note.show{display:block}
+
+  /* footer */
+  footer{background:var(--brown-deep);color:#E9DAC6;padding:64px 0 30px}
+  footer .frow{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+  footer h4{color:#FBF1E2;font-size:1.6rem}
+  footer .tagline{font-family:var(--display);font-style:italic;color:var(--accent-soft);margin-top:6px}
+  footer .fnav{display:flex;gap:28px;flex-wrap:wrap}
+  footer .fnav a{color:#E9DAC6;font-weight:600;font-size:.92rem;cursor:pointer}
+  footer .fnav a:hover{color:#fff}
+  footer .fine{margin-top:46px;padding-top:20px;border-top:1px solid rgba(233,218,198,.2);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:rgba(233,218,198,.7)}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    nav.links{position:absolute;top:74px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 20px 18px;gap:2px;display:none}
+    header.open nav.links{display:flex}
+    nav.links a{padding:13px 12px}
+    .nav-toggle{display:flex}
+    .btn-nav{display:none}
+    .cols-3{grid-template-columns:1fr}
+    .cols-2{grid-template-columns:1fr;gap:34px}
+    .eps{grid-template-columns:1fr}
+    .featured{grid-template-columns:1fr;gap:22px}
+    .cover{width:100%;max-width:300px;margin:0 auto}
+    section{padding:66px 0}
+    .season{grid-template-columns:1fr;gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .rv{transition:none;opacity:1;transform:none}
+    .page{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- dawn mark reused -->
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="dawnmark">
+    <path d="M6 30 A24 24 0 0 1 54 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="30" y1="4" x2="30" y2="13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="12" y1="11" x2="17" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="48" y1="11" x2="43" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="2" y1="30" x2="58" y2="30" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>
+  </g>
+</defs></svg>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <div class="brand" data-go="home" aria-label="Dr. Joan Jones — home">
+      <svg class="mark" viewBox="0 0 60 34" style="color:var(--accent)"><use href="#dawnmark"/></svg>
+      <div class="mono">Dr. Joan Jones<small>Who told you that you were done?</small></div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <nav class="links" id="links">
+      <a data-go="home" class="active">Home</a>
+      <a data-go="about">About</a>
+      <a data-go="podcast">Podcast</a>
+      <a data-go="contact">Contact</a>
+      <a data-go="podcast" class="btn btn-accent btn-nav" style="margin-left:8px;color:#fff">Listen</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HOME ===================== -->
+<div class="page active" id="home">
+  <section class="hero">
+    <div class="wrap">
+      <svg class="dawn" width="66" height="38" viewBox="0 0 60 34" style="color:var(--accent)"><use href="#dawnmark"/></svg>
+      <p class="eyebrow">A new podcast with Dr. Joan Jones</p>
+      <h1 style="margin-top:18px">Who told you that<br>you were done?</h1>
+      <p class="answer">You're not. There's still more ahead.</p>
+      <p class="lead">Conversations on mental health, faith, and life after 60 — offered with wisdom, encouragement, and room to breathe.</p>
+      <div class="cta">
+        <a class="btn btn-accent" data-go="podcast">Listen soon</a>
+        <a class="btn btn-ghost" data-go="about">Meet Dr. Joan</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap center rv">
+      <p class="eyebrow">About the show</p>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.9rem);margin:14px 0 20px">A place for anyone who has been told their best days are behind them.</h2>
+      <p class="lead" style="margin:0 auto">Hosted by Dr. Joan Jones — psychotherapist, counselor, and mentor — this is honest conversation and hard-won wisdom for people who feel stuck or finished. Every episode offers hope, language for what you're carrying, and permission to believe there is still more available to you.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Who it's for</p>
+        <h2>You may recognize yourself here.</h2>
+      </div>
+      <ul class="forlist rv">
+        <li><b>01</b><span>You feel stuck, or quietly believe the story is over.</span></li>
+        <li><b>02</b><span>You're rebuilding after loss, divorce, change, or years of caregiving.</span></li>
+        <li><b>03</b><span>You're looking for hope, faith, and a fresh start — especially in your 60s and beyond.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head rv" style="margin-bottom:40px">
+        <p class="eyebrow">What we talk about</p>
+        <h2>Three threads, woven together.</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card rv"><div class="num">Mental health</div><h3>Insight you can use</h3><p>Practical, compassionate perspective drawn from decades in practice — named plainly, never clinical or cold.</p></div>
+        <div class="card rv"><div class="num">Faith</div><h3>Honest questions</h3><p>A gentle, faith-informed thread that welcomes everyone in — room for doubt, and for hope.</p></div>
+        <div class="card rv"><div class="num">Life after 60</div><h3>Still becoming</h3><p>Reinvention, purpose, and the surprising freedom of this season of life.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap rv">
+      <div class="quote">
+        <p>"I meet people every day who think the story is over. It isn't. You are not done."</p>
+        <cite>Dr. Joan Jones</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap cols-2">
+      <div class="rv">
+        <p class="eyebrow">Stay close</p>
+        <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin:12px 0 10px">Be the first to know when episodes go live.</h2>
+        <p class="lead">No noise. Just a note when there's something worth your time.</p>
+        <div class="signup">
+          <input type="email" placeholder="Your email address" aria-label="Your email address">
+          <button class="btn btn-accent" onclick="notify(this)">Notify me</button>
+        </div>
+      </div>
+      <div class="rv"><div class="portrait"><div class="medallion">JJ</div><span class="cap">Portrait placeholder</span></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<div class="page" id="about">
+  <section class="hero" style="padding:88px 0 40px">
+    <div class="wrap">
+      <p class="eyebrow">About Dr. Joan</p>
+      <h1 style="font-size:clamp(2.3rem,5.4vw,4rem);margin-top:14px">The woman behind<br>the wisdom.</h1>
+    </div>
+  </section>
+
+  <section style="padding-top:20px">
+    <div class="wrap cols-2">
+      <div class="rv stack-sm">
+        <p class="lead">Dr. Joan Jones is an experienced psychotherapist, counselor, and faith-centered teacher and mentor, approaching her 67th birthday. She holds multiple degrees and has built a meaningful career — and she still practices today because she loves serving others and sharing the wisdom she has gained.</p>
+        <p>She has a warm Jamaican accent, a captivating voice, a direct style, and a strong sense of humor — with a natural gift for recognizing potential in people and helping them see possibilities they don't yet see for themselves.</p>
+      </div>
+      <div class="rv"><div class="portrait"><div class="medallion">JJ</div><span class="cap">Portrait placeholder</span></div></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head rv" style="margin-bottom:8px">
+        <p class="eyebrow">Her story</p>
+        <h2>Hard seasons, and what she found in them.</h2>
+      </div>
+      <div class="grid cols-2" style="align-items:start;margin-top:22px">
+        <p class="lead rv">Her own path has included divorce, family challenges, and caregiving for an adult son with chronic health concerns. She has wrestled with questions of faith, and worked through self-doubt and imposter syndrome to finally recognize the value of her own voice and life experience.</p>
+        <p class="rv">After a full career, she returned to school in her 50s and earned her Ph.D. over 60 — proof, in her own life, of the very thing this podcast is about: you are not finished. That belief is what she now brings to every listener.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap center rv">
+      <p class="eyebrow">Why the podcast</p>
+      <h2 style="font-size:clamp(1.8rem,3.8vw,2.7rem);margin:12px 0 18px">Wisdom is meant to be shared.</h2>
+      <p class="lead" style="margin:0 auto">Dr. Joan is building this podcast and platform to share her wisdom, faith, professional insight, and personal story — giving listeners hope, language for what they're going through, and permission to believe there's still more available to them.</p>
+      <div class="cta" style="display:flex;gap:14px;justify-content:center;margin-top:30px"><a class="btn btn-accent" data-go="podcast">Explore the podcast</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PODCAST ===================== -->
+<div class="page" id="podcast">
+  <section class="hero" style="padding:88px 0 44px">
+    <div class="wrap">
+      <p class="eyebrow">The podcast</p>
+      <h1 style="font-size:clamp(2.3rem,5.4vw,4rem);margin-top:14px">Who Told You That<br>You Were Done?</h1>
+      <p class="lead" style="margin-top:22px">A three-season journey — beginning with Dr. Joan's own story, then opening up to guests who have come through hard seasons into hope.</p>
+      <div class="listen">
+        <a><span class="dot"></span>Apple Podcasts · soon</a>
+        <a><span class="dot"></span>Spotify · soon</a>
+        <a><span class="dot"></span>YouTube · soon</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:60px">
+    <div class="wrap">
+      <div class="sec-head rv"><p class="eyebrow">The arc</p><h2>Three seasons.</h2></div>
+      <div style="margin-top:26px">
+        <div class="season rv"><div class="tag">Season 1</div><div><h3>Dr. Joan's Story</h3><p class="muted">The show begins with Dr. Joan — the moments that shaped her, one chapter at a time. A warm interview, so she never carries an episode alone.</p></div></div>
+        <div class="season rv"><div class="tag">Season 2</div><div><h3>Conversations</h3><p class="muted">Guests with stories of faith, reinvention, caregiving, and starting again share what carried them through.</p></div></div>
+        <div class="season rv"><div class="tag">Season 3</div><div><h3>Conversations continue</h3><p class="muted">More voices join in, widening the circle around the show's message.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><p class="eyebrow">Season 1 · Dr. Joan's Story</p><h2>Episodes</h2></div>
+
+      <div class="featured rv">
+        <div class="cover" style="background:linear-gradient(140deg,#4A3418,#9A5326)">
+          <svg class="cmark" width="32" height="18" viewBox="0 0 60 34" style="color:#F3E7D5"><use href="#dawnmark"/></svg>
+          <div class="cn">01</div>
+          <div class="clabel">Dr. Joan's Story</div>
+        </div>
+        <div>
+          <p class="eyebrow">Season premiere</p>
+          <h3 style="font-size:1.9rem;margin:8px 0 10px">Beginnings</h3>
+          <p class="muted">Dr. Joan opens the season where every story starts — the people, the place, and the faith that shaped her, and the first time someone told her what she couldn't do.</p>
+          <div class="fmeta"><span>&#9711; 42 min</span><span>Premieres September 2026</span></div>
+          <button class="play" onclick="soon(this)">&#9658; Play episode</button>
+          <div class="prog"></div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--display);font-weight:500;font-size:1.3rem;margin:46px 0 6px;color:var(--brown)">More from Season 1</h3>
+      <div class="eps">
+        <div class="ep rv">
+          <div class="ep-cover" style="background:linear-gradient(140deg,#6B4E2E,#9A6A3A)"><svg class="cmark" width="26" height="15" viewBox="0 0 60 34" style="color:#F3E7D5"><use href="#dawnmark"/></svg><div class="en">02</div></div>
+          <div class="ep-body"><span class="emeta">Ep 02 &middot; 39 min</span><h4>Finding her voice</h4><p class="muted">Growing up between cultures, and learning early what she was capable of.</p><span class="ep-play" onclick="soon(this)">&#9658; Play</span></div>
+        </div>
+        <div class="ep rv">
+          <div class="ep-cover" style="background:linear-gradient(140deg,#A85C2A,#C98A4E)"><svg class="cmark" width="26" height="15" viewBox="0 0 60 34" style="color:#F3E7D5"><use href="#dawnmark"/></svg><div class="en">03</div></div>
+          <div class="ep-body"><span class="emeta">Ep 03 &middot; 45 min</span><h4>Hard seasons</h4><p class="muted">Divorce, loss, and the questions of faith that came with them.</p><span class="ep-play" onclick="soon(this)">&#9658; Play</span></div>
+        </div>
+        <div class="ep rv">
+          <div class="ep-cover" style="background:linear-gradient(140deg,#4A3418,#7A5A34)"><svg class="cmark" width="26" height="15" viewBox="0 0 60 34" style="color:#F3E7D5"><use href="#dawnmark"/></svg><div class="en">04</div></div>
+          <div class="ep-body"><span class="emeta">Ep 04 &middot; 41 min</span><h4>Caregiving &amp; love</h4><p class="muted">Caring for her son through chronic illness — strength, and surrender.</p><span class="ep-play" onclick="soon(this)">&#9658; Play</span></div>
+        </div>
+        <div class="ep rv">
+          <div class="ep-cover" style="background:linear-gradient(140deg,#B0642F,#D69A5E)"><svg class="cmark" width="26" height="15" viewBox="0 0 60 34" style="color:#F3E7D5"><use href="#dawnmark"/></svg><div class="en">05</div></div>
+          <div class="ep-body"><span class="emeta">Ep 05 &middot; 44 min</span><h4>Purpose &amp; practice</h4><p class="muted">How faith, work, and calling finally came together.</p><span class="ep-play" onclick="soon(this)">&#9658; Play</span></div>
+        </div>
+        <div class="ep rv">
+          <div class="ep-cover" style="background:linear-gradient(140deg,#7A4A24,#A87038)"><svg class="cmark" width="26" height="15" viewBox="0 0 60 34" style="color:#F3E7D5"><use href="#dawnmark"/></svg><div class="en">06</div></div>
+          <div class="ep-body"><span class="emeta">Ep 06 &middot; 47 min</span><h4>Never too late</h4><p class="muted">Returning to school and earning her Ph.D. over 60.</p><span class="ep-play" onclick="soon(this)">&#9658; Play</span></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:26px;font-size:.9rem">Episode titles, lengths, and dates are placeholders for preview — the finals come from Dr. Joan's story sessions.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap center rv">
+      <h2 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">Have someone whose story should be heard?</h2>
+      <p class="lead" style="margin:14px auto 0">We're gathering guests for future seasons.</p>
+      <div class="cta" style="display:flex;justify-content:center;margin-top:26px"><a class="btn btn-accent" data-go="contact">Suggest a guest</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== CONTACT ===================== -->
+<div class="page" id="contact">
+  <section class="hero" style="padding:88px 0 44px">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h1 style="font-size:clamp(2.3rem,5.4vw,4rem);margin-top:14px">We'd love to<br>hear from you.</h1>
+      <p class="lead" style="margin-top:22px">Suggest a guest, invite Dr. Joan to speak, or simply say hello.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:20px">
+    <div class="wrap cols-2" style="align-items:start">
+      <div class="rv">
+        <form class="form" onsubmit="return sendMsg(event)">
+          <div class="field"><label for="n">Name</label><input id="n" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@example.com" required></div>
+          <div class="field"><label for="r">Reason for reaching out</label>
+            <select id="r"><option>Suggest a guest</option><option>Speaking invitation</option><option>A note for Dr. Joan</option><option>Something else</option></select>
+          </div>
+          <div class="field"><label for="m">Message</label><textarea id="m" placeholder="Tell us a little more..." required></textarea></div>
+          <div><button type="submit" class="btn btn-accent">Send message</button></div>
+          <div class="form-note" id="fnote">Thank you — your message is on its way. Dr. Joan's team will be in touch.</div>
+        </form>
+      </div>
+      <div class="rv stack-sm">
+        <p class="eyebrow">Other ways to connect</p>
+        <h3 style="font-size:1.5rem">Follow along</h3>
+        <p class="muted">Social channels are being set up now and will be linked here.</p>
+        <div class="listen" style="margin-top:8px">
+          <a><span class="dot"></span>YouTube · soon</a>
+          <a><span class="dot"></span>Instagram · soon</a>
+        </div>
+        <div style="margin-top:26px">
+          <h3 style="font-size:1.5rem">Get episode updates</h3>
+          <div class="signup" style="margin-top:14px">
+            <input type="email" placeholder="Your email address" aria-label="Your email address">
+            <button class="btn btn-accent" onclick="notify(this)">Notify me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg width="44" height="26" viewBox="0 0 60 34" style="color:var(--accent-soft)"><use href="#dawnmark"/></svg>
+          <h4>Dr. Joan Jones</h4>
+        </div>
+        <p class="tagline">You are not finished.</p>
+      </div>
+      <div class="fnav">
+        <a data-go="home">Home</a>
+        <a data-go="about">About</a>
+        <a data-go="podcast">Podcast</a>
+        <a data-go="contact">Contact</a>
+      </div>
+    </div>
+    <div class="fine">
+      <span>Faith-informed and welcoming to all.</span>
+      <span>Design mockup for review · logo and imagery are placeholders.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const pages = document.querySelectorAll('.page');
+  const navlinks = document.querySelectorAll('nav.links a[data-go]');
+  const hdr = document.getElementById('hdr');
+
+  function reveal(scope){
+    (scope||document).querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+  }
+  function go(id){
+    pages.forEach(p=>p.classList.toggle('active', p.id===id));
+    navlinks.forEach(a=>a.classList.toggle('active', a.dataset.go===id && !a.classList.contains('btn')));
+    window.scrollTo({top:0,behavior:'instant' in window ? 'instant':'auto'});
+    hdr.classList.remove('open');
+    document.getElementById('navToggle').setAttribute('aria-expanded','false');
+    // ensure content in the newly shown page is visible
+    const page = document.getElementById(id);
+    // small delay lets observer catch, but reveal immediately for switched page
+    requestAnimationFrame(()=>reveal(page));
+  }
+  document.querySelectorAll('[data-go]').forEach(el=>{
+    el.style.cursor='pointer';
+    el.addEventListener('click', e=>{ e.preventDefault(); go(el.dataset.go); });
+  });
+
+  // mobile menu
+  const toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', ()=>{
+    const open = hdr.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open?'true':'false');
+  });
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // mock interactions
+  function notify(btn){
+    const inp = btn.previousElementSibling;
+    if(inp && inp.value && inp.value.includes('@')){ btn.textContent='Thank you!'; btn.disabled=true; inp.disabled=true; }
+    else { inp && inp.focus(); }
+  }
+  function soon(el){
+    if(el.tagName==='BUTTON'){ el.textContent='Available at launch'; el.disabled=true; }
+    else { el.textContent='\u25B6 Soon'; el.style.opacity=.55; el.style.cursor='default'; el.onclick=null; }
+  }
+  function sendMsg(e){
+    e.preventDefault();
+    document.getElementById('fnote').classList.add('show');
+    e.target.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);
+    return false;
+  }
+
+  reveal(document.getElementById('home'));
+</script>
+</body>
+</html>
