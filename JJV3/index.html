@@ -6,7 +6,7 @@
 <title>Who Told You That You Were Done? — Dr. Joan Jones (V3)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Nunito+Sans:wght@400;600;700&family=Parisienne&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FDFAF3; --bg-2:#FBF1E2; --peach:#F7E1C6; --peach-2:#FBEAD6;
@@ -16,6 +16,7 @@
     --disp:'Poppins',system-ui,sans-serif;
     --body:'Nunito Sans',system-ui,-apple-system,Segoe UI,sans-serif;
     --serif:'Fraunces',Georgia,serif;
+    --script:'Parisienne',cursive;
     --wrap:1120px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -28,6 +29,7 @@
   .lead{font-size:1.16rem;line-height:1.75;color:var(--ink-2);max-width:60ch}
   .muted{color:var(--muted)}
   .serif-it{font-family:var(--serif);font-style:italic;font-weight:400}
+  .script{font-family:var(--script);font-weight:400;color:var(--accent-deep);line-height:1}
 
   header{position:sticky;top:0;z-index:50;background:rgba(253,250,243,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .bar{display:flex;align-items:center;justify-content:space-between;height:78px}
@@ -57,11 +59,11 @@
 
   /* hero */
   .hero{position:relative;overflow:hidden;padding:70px 0 90px}
-  .hero::before{content:'';position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;
+  #home .hero::before{content:'';position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;
     background:radial-gradient(circle at 50% 60%, var(--peach) 0%, rgba(247,225,198,0) 70%);z-index:0}
   .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
   .hero h1{font-size:clamp(2.8rem,6.6vw,4.9rem);letter-spacing:-.02em;margin-top:20px}
-  .hero .answer{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent-deep);font-size:clamp(1.5rem,3.4vw,2.3rem);margin-top:14px}
+  .hero .answer{font-family:var(--script);font-weight:400;color:var(--accent-deep);font-size:clamp(2.3rem,5.2vw,3.6rem);margin-top:10px;line-height:1.05}
   .hero .lead{margin-top:24px}
   .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
   .blob{aspect-ratio:1/1;background:linear-gradient(150deg,var(--peach) 0%,var(--peach-2) 100%);
@@ -89,7 +91,7 @@
   /* quote */
   .pull{background:var(--accent);border-radius:30px;padding:70px 8%;text-align:center;position:relative;overflow:hidden}
   .pull::before{content:'';position:absolute;left:-80px;bottom:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.1)}
-  .pull p{position:relative;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.25;color:#fff;max-width:24ch;margin:0 auto}
+  .pull p{position:relative;font-family:var(--script);font-weight:400;font-size:clamp(2.4rem,5.4vw,3.7rem);line-height:1.15;color:#fff;max-width:20ch;margin:0 auto}
   .pull cite{position:relative;display:block;margin-top:24px;font-family:var(--disp);font-style:normal;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;color:var(--peach)}
 
   .cols-2{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -139,7 +141,7 @@
 
   footer{background:var(--bg-2);color:var(--ink-2);padding:64px 0 30px;margin-top:0;border-top:1px solid var(--line)}
   footer .frow{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
-  footer h3{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink);font-size:1.7rem;margin-top:12px}
+  footer h3{font-family:var(--script);font-weight:400;color:var(--accent-deep);font-size:2.5rem;margin-top:8px}
   footer .fnav{display:flex;gap:28px;flex-wrap:wrap}
   footer .fnav a{color:var(--ink-2);font-family:var(--disp);font-weight:500;font-size:.9rem;cursor:pointer}
   footer .fnav a:hover{color:var(--accent-deep)}
@@ -266,7 +268,7 @@
   <section class="hero" style="padding:70px 0 40px">
     <div class="wrap">
       <p class="eyebrow">About Dr. Joan</p>
-      <h1 style="font-size:clamp(2.5rem,5.6vw,4.2rem);margin-top:14px">The woman behind the wisdom.</h1>
+      <h1 style="font-size:clamp(2.5rem,5.6vw,4.2rem);margin-top:14px">The woman behind the wisdom</h1>
     </div>
   </section>
 
@@ -282,7 +284,7 @@
 
   <section class="blk soft-band">
     <div class="wrap">
-      <div class="rv" style="margin-bottom:22px"><p class="eyebrow">Her story</p><h2 class="big" style="margin-top:12px">Hard seasons, and what she found in them.</h2></div>
+      <div class="rv" style="margin-bottom:22px"><p class="script" style="font-size:2.4rem">Her story</p><h2 class="big" style="margin-top:2px">Hard seasons, and what she found in them</h2></div>
       <div class="cols-2" style="align-items:start">
         <p class="lead rv">Her own path has included divorce, family challenges, and caregiving for an adult son with chronic health concerns. She has wrestled with questions of faith, and worked through self-doubt and imposter syndrome to finally recognize the value of her own voice and life experience.</p>
         <p class="rv">After a full career, she returned to school in her fifties and earned her Ph.D. over sixty — living proof, in her own life, of the very thing this podcast is about: you are not finished. That belief is what she now brings to every listener.</p>
@@ -292,8 +294,8 @@
 
   <section class="blk">
     <div class="wrap center rv">
-      <p class="eyebrow">Why the podcast</p>
-      <h2 class="big" style="margin:12px 0 18px">Wisdom is meant to be shared.</h2>
+      <p class="script" style="font-size:2.4rem">Why the podcast</p>
+      <h2 class="big" style="margin:2px 0 18px">Wisdom is meant to be shared</h2>
       <p class="lead" style="margin:0 auto">Dr. Joan is building this podcast and platform to share her wisdom, faith, professional insight, and personal story — giving listeners hope, language for what they're going through, and permission to believe there's still more available to them.</p>
       <div class="cta" style="display:flex;justify-content:center;margin-top:30px"><a class="btn btn-solid" data-go="podcast">Explore the podcast</a></div>
     </div>
@@ -359,7 +361,7 @@
   <section class="hero" style="padding:70px 0 40px">
     <div class="wrap">
       <p class="eyebrow">Get in touch</p>
-      <h1 style="font-size:clamp(2.5rem,5.6vw,4.2rem);margin-top:14px">We'd love to hear from you.</h1>
+      <h1 style="font-size:clamp(2.5rem,5.6vw,4.2rem);margin-top:14px">We'd love to hear from you</h1>
       <p class="lead" style="margin-top:20px">Suggest a guest, invite Dr. Joan to speak, or simply say hello.</p>
     </div>
   </section>
