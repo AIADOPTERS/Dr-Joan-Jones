@@ -137,6 +137,18 @@
   footer .fnav a:hover{color:#fff}
   footer .fine{margin-top:44px;padding-top:20px;border-top:1px solid rgba(233,220,196,.22);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.76rem;color:rgba(233,220,196,.65)}
 
+  /* merch editorial */
+  .shop{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:30px}
+  .product{display:flex;flex-direction:column}
+  .garment{aspect-ratio:1/1;background:var(--sand);border:1px solid var(--line-strong);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative}
+  .garment .g-med{width:84px;height:84px;border:1.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:1.7rem;color:var(--ink)}
+  .garment .g-tag{font-family:var(--disp);font-style:italic;font-weight:400;color:var(--ink-2);font-size:.92rem;max-width:74%;text-align:center;line-height:1.3}
+  .garment .g-cap{position:absolute;bottom:0;left:0;right:0;background:var(--ink);color:var(--ivory);font-family:var(--body);font-weight:600;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:8px}
+  .product h3{font-family:var(--disp);font-weight:700;font-size:1.4rem;margin:18px 0 6px}
+  .product .pd{font-size:.98rem;color:var(--ink-2)}
+  .product .prow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px}
+  .product .price{font-family:var(--disp);font-weight:700;font-size:1.4rem;color:var(--rust)}
+
   .rv{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
   .rv.in{opacity:1;transform:none}
 
@@ -149,6 +161,7 @@
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .split{grid-template-columns:1fr;gap:24px}
     .themes{grid-template-columns:1fr}
+    .shop{grid-template-columns:1fr}
     .themes .col+.col{border-left:0}
     .feature{grid-template-columns:1fr;gap:24px}
     .cover{max-width:280px}
@@ -172,6 +185,7 @@
       <a data-go="home" class="active">Home</a>
       <a data-go="about">About</a>
       <a data-go="podcast">Podcast</a>
+      <a data-go="merch">Merch</a>
       <a data-go="contact">Contact</a>
       <a data-go="podcast" class="btn btn-solid btn-nav">Listen</a>
     </nav>
@@ -342,6 +356,7 @@
         <a onclick="soon(this)">Apple Podcasts</a>
         <a onclick="soon(this)">Spotify</a>
         <a onclick="soon(this)">YouTube</a>
+        <a onclick="soon(this)">Instagram</a>
       </div>
     </div>
   </section>
@@ -381,6 +396,65 @@
   </section>
 </div>
 
+<!-- ============ MERCH ============ -->
+<div class="page" id="merch">
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Merchandise</p>
+      <h1 style="font-size:clamp(2.6rem,6vw,4.8rem);margin-top:20px">Wear the reminder</h1>
+      <p class="standfirst" style="max-width:50ch">Soft tees and baseball caps, each carrying the show's logo and the question that started it all.</p>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="wrap">
+      <p class="kicker gold">The collection</p>
+      <div class="shop rv">
+        <div class="product">
+          <div class="garment">
+            <div class="g-med">JJ</div>
+            <div class="g-tag">"Who told you that you were done?"</div>
+            <span class="g-cap">T-shirt · mockup</span>
+          </div>
+          <h3>The "Not Done" Tee</h3>
+          <p class="pd">Soft, everyday cotton with the logo and tagline across the chest.</p>
+          <div class="prow"><span class="price">$28</span><button class="btn btn-solid" onclick="soon(this)">Add to cart</button></div>
+        </div>
+
+        <div class="product">
+          <div class="garment">
+            <div class="g-med">JJ</div>
+            <div class="g-tag">Embroidered logo</div>
+            <span class="g-cap">Baseball cap · mockup</span>
+          </div>
+          <h3>The Signature Cap</h3>
+          <p class="pd">A classic baseball cap with the logo embroidered on the front.</p>
+          <div class="prow"><span class="price">$26</span><button class="btn btn-solid" onclick="soon(this)">Add to cart</button></div>
+        </div>
+
+        <div class="product">
+          <div class="garment">
+            <div class="g-med">JJ</div>
+            <div class="g-tag">More designs on the way</div>
+            <span class="g-cap">Coming soon</span>
+          </div>
+          <h3>More coming soon</h3>
+          <p class="pd">New pieces will be added here as the collection grows.</p>
+          <div class="prow"><span class="price">&nbsp;</span><button class="btn btn-line" onclick="soon(this)">Notify me</button></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:26px;font-size:.9rem">Products and prices are placeholders for preview. The final logo will appear on every item.</p>
+    </div>
+  </section>
+
+  <section class="blk band">
+    <div class="wrap" style="text-align:center">
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem)">Every purchase carries the message a little further</h2>
+      <div class="cta" style="display:flex;justify-content:center;margin-top:22px"><a class="btn btn-solid" data-go="podcast">Back to the podcast</a></div>
+    </div>
+  </section>
+</div>
+
 </main>
 
 <footer>
@@ -391,7 +465,7 @@
         <h3>You are not finished.</h3>
       </div>
       <div class="fnav">
-        <a data-go="home">Home</a><a data-go="about">About</a><a data-go="podcast">Podcast</a><a data-go="contact">Contact</a>
+        <a data-go="home">Home</a><a data-go="about">About</a><a data-go="podcast">Podcast</a><a data-go="merch">Merch</a><a data-go="contact">Contact</a>
       </div>
     </div>
     <div class="fine">
